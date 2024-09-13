@@ -1,0 +1,12 @@
+module substraction(a, b, sum, cout, overflow);
+
+	input [31:0] a, b;
+   output [31:0] sum;
+   output cout, overflow;
+   
+	wire [31:0] b_not;
+   
+	not_gates_32 my_not_gate1(.a(b[31:0]), .a_not(b_not[31:0]));
+   CSA_32 my_CSA1(.a(a[31:0]), .b(b_not[31:0]), .cin(1'b1), .sum(sum[31:0]), .cout(cout));
+	
+endmodule

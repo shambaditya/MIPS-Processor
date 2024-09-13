@@ -1,0 +1,16 @@
+module not_gate_32(a, not_a);
+
+	input [31:0] a;
+	output [31:0] not_a;
+	
+	genvar i;
+	
+	generate 
+			for(i=0; i < 32; i=i+1) begin: not_loop
+				not not_gate1(not_a[i], a[i]);
+			end
+	endgenerate
+	
+endmodule
+
+			

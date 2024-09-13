@@ -1,0 +1,14 @@
+module muxes_1(a, b, sel, out);
+
+	input a, b, sel;
+	output out;
+	
+	wire w1, w2, w3;
+	
+	and and_gate(w1, b, sel);
+	not not_gate(w3, sel);
+	and and_gate1(w2, a, w3);
+	or  or_gate(out, w1, w2);
+	
+endmodule
+

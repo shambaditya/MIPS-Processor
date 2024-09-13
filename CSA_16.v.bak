@@ -1,0 +1,21 @@
+ module CSA_16(a, b, cin, sum, cout, overflow);
+
+	input [15:0] a, b;
+	input cin;
+   output [15:0] sum;
+   output cout, overflow;
+
+
+   wire w1,w2,w3,w4,w5,w6;
+   wire [7:0] s1,s2;
+
+
+   RCA_16bits my_RCA1(.a(a[7:0]), .b(b[7:0]), .cin(cin), .sum(sum[7:0]), .cout(w1));
+	
+   RCA_16bits my_RCA2(.a(a[15:8]), .b(b[15:8]), .cin(1'b0), .sum(s1), .cout(w2));
+	RCA_16bits my_RCA3(.a(a[15:8]), .b(b[15:8]), .cin(1'b1), .sum(s2), .cout(w3));
+	
+	muxes_16 my_mux1(.a(s1), .b(s2), .sel(w1), .out(sum[15:8]));
+	muxes_1  mymux2(.a(w2), .b(w3), .sel(w1), .out(cout));
+	
+endmodule

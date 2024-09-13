@@ -1,0 +1,13 @@
+module overflow_check(a, b, sum, overflow);
+
+	input a, b, sum;
+	output overflow;
+	
+	wire w1,w2,w3;
+	
+	xor xor_gate1(w1, a, sum);
+	xor xor_gate2(w3, a, b);
+	not not_gate2(w2, w3);
+	and and_gate1(overflow, w1, w2);
+	
+endmodule

@@ -1,0 +1,21 @@
+module CSA_32(a, b, cin, sum, cout);
+
+	input [31:0] a, b;
+	input cin;
+   output [31:0] sum;
+   output cout;
+
+
+   wire w1,w2,w3
+   wire [15:0] s1,s2;
+
+
+   RCA_16bits my_RCA(.a(a[15:0]), .b(b[15:0]), .cin(cin), .sum(sum[15:0]), .cout(w1));
+	
+   RCA_16bits my_RCA(.a(a[31:16]), .b(b[31:16]), .cin(1'b0), .sum(s1), .cout(w2));
+	RCA_16bits my_RCA(.a(a[31:16]), .b(b[31:16]), .cin(1'b1), .sum(s2), .cout(w3));
+	
+	muxes_16 my_mux1(.a(s1), .b(s2), .sel(w1), .out(sum[31:16]));
+	muxes_1  mymux2(.a(w2), .b(w3), .sel(w1), .out(cout));
+   	
+endmodule

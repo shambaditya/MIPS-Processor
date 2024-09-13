@@ -1,0 +1,28 @@
+module RCA_16bits (a, b, cin, sum, cout);
+	
+	input [15:0] a, b;
+	input cin;
+	output [15:0] sum;
+	output cout;
+	
+	wire [14:0] w5;
+	
+	full_adder my_fa(.sum(sum[0]), .cout(w5[0]), .a(a[0]), .b(b[0]), .cin(cin));
+	full_adder my_fa1(.sum(sum[1]), .cout(w5[1]), .a(a[1]), .b(b[1]), .cin(w5[0]));
+	full_adder my_fa2(.sum(sum[2]), .cout(w5[2]), .a(a[2]), .b(b[2]), .cin(w5[1]));
+	full_adder my_fa3(.sum(sum[3]), .cout(w5[3]), .a(a[3]), .b(b[3]), .cin(w5[2]));
+	full_adder my_fa4(.sum(sum[4]), .cout(w5[4]), .a(a[4]), .b(b[4]), .cin(w5[3]));
+	full_adder my_fa5(.sum(sum[5]), .cout(w5[5]), .a(a[5]), .b(b[5]), .cin(w5[4]));
+	full_adder my_fa6(.sum(sum[6]), .cout(w5[6]), .a(a[6]), .b(b[6]), .cin(w5[5]));
+	full_adder my_fa7(.sum(sum[7]), .cout(w5[7]), .a(a[7]), .b(b[7]), .cin(w5[6]));
+	full_adder my_fa8(.sum(sum[8]), .cout(w5[8]), .a(a[8]), .b(b[8]), .cin(w5[7]));
+	full_adder my_fa9(.sum(sum[9]), .cout(w5[9]), .a(a[9]), .b(b[9]), .cin(w5[8]));
+	full_adder my_fa10(.sum(sum[10]), .cout(w5[10]), .a(a[10]), .b(b[10]), .cin(w5[9]));
+	full_adder my_fa11(.sum(sum[11]), .cout(w5[11]), .a(a[11]), .b(b[11]), .cin(w5[10]));
+	full_adder my_fa12(.sum(sum[12]), .cout(w5[12]), .a(a[12]), .b(b[12]), .cin(w5[11]));
+	full_adder my_fa13(.sum(sum[13]), .cout(w5[13]), .a(a[13]), .b(b[13]), .cin(w5[12]));
+	full_adder my_fa14(.sum(sum[14]), .cout(w5[14]), .a(a[14]), .b(b[14]), .cin(w5[13]));
+	full_adder my_fa15(.sum(sum[15]), .cout(cout), .a(a[15]), .b(b[15]), .cin(w5[14]));
+	
+endmodule 
+	
